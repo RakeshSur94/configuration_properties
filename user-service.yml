@@ -10,8 +10,6 @@ spring:
     admin:
       client:
         url: http://localhost:1111/
-  application:
-    name: ${APPLICATION_NAME:user-service}
   datasource:
     url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DB:user?createDatabaseIfNotExist=true}
     username: ${MYSQL_USER:root}
