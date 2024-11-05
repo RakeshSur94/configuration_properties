@@ -1,8 +1,6 @@
 server:
   port: ${SERVER_PORT:9094}
 spring:
-  application:
-    name: order-service
   datasource:
     url: jdbc:mysql://localhost:3306/orders?createDatabaseIfNotExist=true
     username: root
