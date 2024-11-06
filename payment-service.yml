@@ -1,6 +1,10 @@
 server:
   port: 9093
 spring:
+    boot:
+    admin:
+      client:
+        url: http://localhost:1111/
   application:
     name: payment-service
   datasource:
