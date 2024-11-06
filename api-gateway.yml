@@ -1,7 +1,7 @@
 server:
   port: 8765
 spring:
-    boot:
+  boot:
     admin:
       client:
         url: http://localhost:1111/
