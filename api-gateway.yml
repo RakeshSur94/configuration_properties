@@ -1,6 +1,10 @@
 server:
   port: 8765
 spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:1111/
   cloud:
     gateway:
       routes:
