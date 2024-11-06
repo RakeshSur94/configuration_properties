@@ -1,7 +1,7 @@
 server:
   port: 9093
 spring:
-    boot:
+  boot:
     admin:
       client:
         url: http://localhost:1111/
