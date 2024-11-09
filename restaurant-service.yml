@@ -1,10 +1,6 @@
 server:
   port: ${SERVER_PORT:9091}
-#eureka:
-#  client:
-#    register-with-eureka: ${REGISTER_WITH_EUREKA:true}
-#    service-url:
-#      defaultZone: ${DEFAULT_ZONE:http://localhost:8761/eureka/}
+
 spring:
   boot:
     admin:
@@ -12,20 +8,36 @@ spring:
         url: http://localhost:1111/
   application:
     name: ${APPLICATION_NAME:restaurant-service}
+  
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DB:restaurants?createDatabaseIfNotExist=true}
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_PASSWORD:Emami@4321}
+
+  jpa:
+    show-sql: true
+
+  flyway:
+    baseline-on-migrate: true
+
   cache:
     type: redis
     host: localhost
     port: 6379
     redis:
       time-to-live: 60000
-  datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DB:restaurants?createDatabaseIfNotExist=true}
-    username: ${MYSQL_USER:root}
-    password: ${MYSQL_PASSWORD:Emami@4321}
-  jpa:
-    show-sql: true
-  flyway:
-    baseline-on-migrate: true
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      redisService:
+        registerHealthIndicator: true
+        failureRateThreshold: 50  # Circuit breaker opens if 50% of requests fail
+        waitDurationInOpenState: 5000ms  # Time in open state before attempting to close
+        slidingWindowSize: 100  # Number of calls to consider in failure rate calculation
+        minimumNumberOfCalls: 5  # Minimum number of calls before opening the circuit
+        timeoutDuration: 5000ms  # Maximum time for Redis call before fallback is triggered
+
 management:
   endpoints:
     web:
