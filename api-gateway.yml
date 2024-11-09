@@ -1,10 +1,12 @@
 server:
   port: 8765
+
 spring:
   boot:
     admin:
       client:
         url: http://localhost:1111
+
   cloud:
     gateway:
       routes:
@@ -31,10 +33,6 @@ spring:
           filters:
             - name: AuthenticationFilter
 
-
-
-
-
 management:
   endpoints:
     web:
@@ -49,5 +47,3 @@ management:
     health:
       probes:
         enabled: true
-
-
