@@ -1,20 +1,26 @@
 server:
   port: 9093
+
 spring:
   boot:
     admin:
       client:
         url: http://localhost:1111/
+  
   application:
     name: payment-service
+  
   datasource:
     url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DB:payments?createDatabaseIfNotExist=true}
     username: ${MYSQL_USER:root}
     password: ${MYSQL_PASSWORD:Emami@4321}
+  
   jpa:
     show-sql: true
+  
   flyway:
     baseline-on-migrate: true
+
   kafka:
     consumer:
       bootstrap-servers:
@@ -52,9 +58,6 @@ logging:
       springframework:
         security: DEBUG
 
-
 razorpay:
   key: rzp_test_WAWyLd9XohJz7j
   secret: LsJ4gPfMOwfqN1myzXQVPIZL
-
-
