@@ -1,0 +1,34 @@
+server:
+  port: 9095
+spring:
+  application:
+    name: notification-service
+  mail:
+      host: smtp.gmail.com
+      port: 587
+      username: rakeshsur72@gmail.com
+      password: jxuh tbdm bziw hezf
+      properties:
+        mail:
+          smtp:
+            auth: true
+            starttls:
+              enable: true
+
+  kafka:
+    consumer:
+      bootstrap-servers:
+        - "localhost:19092"
+        - "localhost:29092"
+        - "localhost:39092"
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      auto-offset-reset: earliest
+
+    producer:
+      bootstrap-servers:
+        - "localhost:19092"
+        - "localhost:29092"
+        - "localhost:39092"
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
