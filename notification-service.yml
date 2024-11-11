@@ -16,16 +16,15 @@ spring:
           starttls:
             enable: true
 
-kafka:
-  consumer:
-    bootstrap-servers:
-      - "localhost:19092"
-      - "localhost:29092"
-      - "localhost:39092" 
-    group-id: email-notification
-    key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-    value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-    auto-offset-reset: earliest
+  kafka:
+    consumer:
+      bootstrap-servers:
+        - "localhost:19092"
+        - "localhost:29092"
+        - "localhost:39092"
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      auto-offset-reset: earliest
 
 eureka:
   client:
